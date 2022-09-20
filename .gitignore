@@ -10,6 +10,7 @@
 
 # production
 /build
+/public/CNAME
 
 # misc
 .DS_Store
