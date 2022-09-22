@@ -45,7 +45,11 @@ function Search(props) {
           aria-label="Search"
           className="form-control px-3 py-2 border-0 shadow-none" 
           onClick={() => props.setSearchFocused(true)}
-          onChange={() => props.setSearchFocused(true)}
+          onChange={(event) => {
+            //props.setSearchFocused(true) //do we need to set it to true on every change?
+            setSearchInput(event.target.value)
+          }
+          }
         />
       </div>
       <section
@@ -55,7 +59,10 @@ function Search(props) {
           <h4 className="text-muted fw-bold">Similar Accounts</h4>
           <div className="card-group">
             {companyData.map((e) => (
-              <CompanyCard company={e} />
+              <CompanyCard
+                company={e}
+                key={e.slug}
+              />
             ))}
           </div>
         </div>
