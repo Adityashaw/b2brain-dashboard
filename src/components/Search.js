@@ -1,7 +1,32 @@
 import { useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
+import axios from 'axios';
 import CompanyCard from './CompanyCard';
 import QuickActions from './QuickActions';
+
+
+async function getCompanyDataFromAPI(searchURL, searchInput, abortSignal) {
+  try {
+    const response = await axios.get(searchURL, {
+      params: {
+        q: searchInput
+      },
+      signal: abortSignal
+    });
+    return await response.data;
+  }
+  catch (error) {
+    if (error.response) {
+      console.log(error.response);
+    }
+    else if (error.request) {
+      console.log(error.request);
+    }
+    else {
+      console.log(error);
+    }
+  }
+}
 
 
 function Search(props) {
@@ -22,6 +47,8 @@ function Search(props) {
 
   const [searchInput, setSearchInput] = useState("");
   const [companyData, setCompanyData] = useState(sampleData);
+  const searchURL = 'https://staging.staging.b2brain.com/search/autocomplete_org_all/';
+  let abortController = new AbortController(); // required for cancelling old request
   return (
     <div>
       <div
@@ -29,14 +56,14 @@ function Search(props) {
         {props.searchFocused ?
           <button
             className="btn shadow-none p-0"
-            onClick={() => {
+            onClick={() => { // x on click must clear text in search bar and close the popup
               props.setSearchFocused(false);
               setSearchInput("");
             }}
-            >
-              <FaTimes /></button> 
-          :
-          <FaSearch />
+          >
+            <FaTimes /></button> 
+            :
+            <FaSearch />
         }
         <input
           type="text"
@@ -45,9 +72,15 @@ function Search(props) {
           aria-label="Search"
           className="form-control px-3 py-2 border-0 shadow-none" 
           onClick={() => props.setSearchFocused(true)}
-          onChange={(event) => {
+          onChange={event => {
             //props.setSearchFocused(true) //do we need to set it to true on every change?
-            setSearchInput(event.target.value)
+            setSearchInput(event.target.value);
+            abortController.abort(); // cancel previous request
+            abortController = new AbortController();
+            // make new request and then set the state
+            getCompanyDataFromAPI(searchURL, searchInput, abortController.signal)
+              .then(data => data && setCompanyData(data))
+              .catch(error => console.log(error));
           }
           }
         />
@@ -57,7 +90,7 @@ function Search(props) {
       >
         <div className="col col-sm-8 col-lg-9">
           <h4 className="text-muted fw-bold">Similar Accounts</h4>
-          <div className="card-group">
+          <div className="row flex-row">
             {companyData.map((e) => (
               <CompanyCard
                 company={e}
