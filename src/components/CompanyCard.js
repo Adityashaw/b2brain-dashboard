@@ -7,12 +7,12 @@ function CompanyCard(props) {
   const [spinnerVisible, setspinnerVisibility] = useState(false)
   return (
     <div
-      className="card border-0 flex-row flex-fill justify-content-center align-items-center"
+      className="card border-0 flex-nowrap flex-row col-12 col-lg-6 justify-content-center align-items-center"
     >
       <img src="/assets/img/sample-logo.png" className="img-fluid rounded-start" alt="logo" />
       <div className="card-body">
         <h6 className="card-title fw-bold">{props.company.company}</h6>
-        <a href={props.company.website} className="text-muted text-decoration-none">{props.company.website}</a>
+        <a href={props.company.website} className="text-muted text-decoration-none text-break">{props.company.website}</a>
       </div>
       <button type="button"
         className={tracking ?
