@@ -12,7 +12,7 @@ function Sidebar() {
     <nav id="sidebarMenu" className="col-4 col-md-3 col-lg-2 d-block bg-light sidebar ">
       <div className="d-flex align-items-center gap-3 p-3">
         <img src="/assets/img/B2Brain.png" alt="logo" />
-        <h2> B2Brain </h2>
+        <h4 className="fw-bold"> B2Brain </h4>
       </div>
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
@@ -96,7 +96,7 @@ function Sidebar() {
 
 function UnreadPill(props) {
   return (
-    <span className="ms-auto badge rounded-pill bg-danger">
+    <span className="ms-auto badge rounded-pill unread-pill">
       {props.unreadCount} Unread
     </span>
   );
