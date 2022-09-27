@@ -1,5 +1,7 @@
-body {
-  font-size: .875rem;
+:root {
+  --bs-body-font-size: .875rem;
+  --my-font: 'Manrope';
+  --bs-body-font-family: var(--my-font, var(--bs-font-sans-serif));
 }
 
 .feather {
@@ -57,8 +59,17 @@ body {
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
+  font-weight: 400;
+  color: #000;
+}
+
+.nav-link svg {
+  opacity: 0.25;
+  margin-inline-end: 0.75rem;
+}
+
+.link-dark {
+  opacity: 0.6;
 }
 
 .sidebar .nav-link .feather {
@@ -67,7 +78,7 @@ body {
 }
 
 .sidebar .nav-link.active {
-  color: #2470dc;
+  font-weight: 700;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -104,5 +115,10 @@ body {
 }
 
 .btn[aria-expanded="true"] > .down-arrow {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.unread-pill {
+  background-color: #FF7474;
+  font-size: 0.625rem;
 }
