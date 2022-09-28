@@ -17,18 +17,18 @@ function Sidebar() {
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active w-100 d-flex gap-2 align-items-center" aria-current="page" href="#">
+            <a className="nav-link active d-flex gap-2 align-items-center" aria-current="page" href="#">
               <IoHomeOutline /> Dashboard
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link w-100 d-flex gap-2 align-items-center" href="#">
+            <a className="nav-link d-flex gap-2 align-items-center" href="#">
               <FaRegStar /> Intels
               <UnreadPill unreadCount="4" />
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link w-100 d-flex gap-2 align-items-center" href="#">
+            <a className="nav-link d-flex gap-2 align-items-center" href="#">
               <FaRegUser /> Leads
               <UnreadPill unreadCount="4" />
             </a>
@@ -40,7 +40,7 @@ function Sidebar() {
               <BsChevronDown className="down-arrow ms-auto"/>
             </button>
             <div className="collapse show ps-2" id="dashboard-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small border-start border-2 ms-3">
+              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 ps-3 small border-start border-2 ms-3">
                 <li className="nav-item">
                   <a href="#" className="nav-link link-dark rounded">Manage all</a>
                 </li>
@@ -59,7 +59,7 @@ function Sidebar() {
               <BsChevronDown className="ms-auto down-arrow"/>
             </button>
             <div className="collapse show ps-2" id="preference-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small border-start border-2 ms-3">
+              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 ps-3 small border-start border-2 ms-3">
                 <li className="nav-item">
                   <a href="#" className="nav-link link-dark rounded">Product Focus</a>
                 </li>
