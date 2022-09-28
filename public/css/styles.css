@@ -26,6 +26,7 @@
   font-size: 1rem;
   z-index: 100; /* Behind the navbar */
   box-shadow: 0px 0 1rem 0.25rem rgba(0, 0, 0, .1);
+  box-shadow: 0.25rem 0 1rem rgba(30, 30, 30, 0.1);
 }
 
 /*
@@ -125,4 +126,8 @@
 
 .bell-icon {
   background-color: #EFF3F9;
+}
+
+.search-bar {
+  box-shadow: 0.25rem 0px 1rem 0.75rem rgba(30, 30, 30, 0.08);
 }
