@@ -52,18 +52,18 @@ function Search(props) {
   return (
     <div>
       <div
-        className="search-bar w-100 d-flex align-items-center px-3 py-2">
+        className="search-bar w-100 d-flex position-relative align-items-center ps-3 py-2">
         {props.searchFocused ?
           <button
-            className="btn shadow-none p-0"
+            className="btn shadow-none px-1"
             onClick={() => { // x on click must clear text in search bar and close the popup
               props.setSearchFocused(false);
               setSearchInput("");
             }}
           >
-            <FaTimes /></button> 
+            <FaTimes className="opacity-25" size="1.5rem"/></button> 
             :
-            <FaSearch />
+            <FaSearch className="opacity-25" size="1.5rem"/>
         }
         <input
           type="text"
@@ -91,13 +91,13 @@ function Search(props) {
               <span className="visually-hidden">New alerts</span>
             </span>
           </div>
-          <div className="p-2">
+          <div className="ps-2 py-2">
             <img className="w-75 rounded border border-light" src="/assets/img/sample-logo.png" />
           </div>
         </div>
       </div>
       <section
-        className={props.searchFocused ? "ps-5 row": "ps-5 row collapse"}
+        className={props.searchFocused ? "ps-5 mt-5 row": "ps-5 mt-5 row collapse"}
       >
         <div className="col col-sm-8 col-lg-9">
           <h4 className="text-muted fw-bold">Similar Accounts</h4>
