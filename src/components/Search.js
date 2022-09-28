@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaSearch, FaTimes } from 'react-icons/fa';
+import { FaRegBell, FaSearch, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import CompanyCard from './CompanyCard';
 import QuickActions from './QuickActions';
@@ -84,6 +84,17 @@ function Search(props) {
           }
           }
         />
+        <div class="d-flex gap-2 justify-content-evenly align-items-center">
+          <div className="px-2 py-1 bell-icon rounded position-relative">
+            <FaRegBell />
+            <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+              <span className="visually-hidden">New alerts</span>
+            </span>
+          </div>
+          <div className="p-2">
+            <img className="w-75 rounded border border-light" src="/assets/img/sample-logo.png" />
+          </div>
+        </div>
       </div>
       <section
         className={props.searchFocused ? "ps-5 row": "ps-5 row collapse"}
