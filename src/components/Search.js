@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { FaRegBell, FaSearch, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
-import CompanyCard from './CompanyCard';
-import QuickActions from './QuickActions';
+import SearchResultSection from './SearchResultSection';
 
 
 async function getCompanyDataFromAPI(searchURL, searchInput, abortSignal) {
@@ -73,7 +72,7 @@ function Search(props) {
           className="form-control px-3 py-2 border-0 shadow-none" 
           onClick={() => props.setSearchFocused(true)}
           onChange={event => {
-            //props.setSearchFocused(true) //do we need to set it to true on every change?
+            props.setSearchFocused(true) //do we need to set it to true on every change?
             setSearchInput(event.target.value);
             abortController.abort(); // cancel previous request
             abortController = new AbortController();
@@ -84,7 +83,7 @@ function Search(props) {
           }
           }
         />
-        <div class="d-flex gap-2 justify-content-evenly align-items-center">
+        <div className="d-flex gap-2 justify-content-evenly align-items-center">
           <div className="px-2 py-1 bell-icon rounded position-relative">
             <FaRegBell />
             <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
@@ -92,29 +91,11 @@ function Search(props) {
             </span>
           </div>
           <div className="ps-2 py-2">
-            <img className="w-75 rounded border border-light" src="/assets/img/sample-logo.png" />
+            <img className="w-75 rounded border border-light" src="/assets/img/sample-logo.png" alt="logo"/>
           </div>
         </div>
       </div>
-      <section
-        className={props.searchFocused ? "ps-5 mt-5 row": "ps-5 mt-5 row collapse"}
-      >
-        <div className="col col-sm-8 col-lg-9">
-          <h4 className="text-muted fw-bold">Similar Accounts</h4>
-          <div className="row flex-row">
-            {companyData.map((e) => (
-              <CompanyCard
-                company={e}
-                key={e.slug}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="col col-sm-4 col-lg-3">
-          <h4 className="text-muted fw-bold mb-4">Quick Actions</h4>
-          <QuickActions />
-        </div>
-      </section>
+      <SearchResultSection searchFocused={props.searchFocused} companyData={companyData} />
     </div>
   );
 }
