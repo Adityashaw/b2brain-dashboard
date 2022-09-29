@@ -21,20 +21,21 @@ function CompanyCard(props) {
             "btn btn-outline-danger ms-auto me-4"
         }
         onClick={() => {
-            !tracking &&
-              setspinnerVisibility(true);
-            setTimeout(() => {
-              
-              setTracking(!tracking)
-              setspinnerVisibility(false)
-            },
-              1000
-            )
+          if(!tracking) {
+            setspinnerVisibility(true);
+            console.log(`${props.company.company} (${props.company.slug}) tracked at ${new Date()}`);
+          }
+          setTimeout(() => {
+            setTracking(!tracking)
+            setspinnerVisibility(false)
+          },
+            1000
+          )
         }}
       >
-          {spinnerVisible &&
-          <FaSpinner className="rotate"/>
-          }
+        {spinnerVisible &&
+        <FaSpinner className="rotate"/>
+        }
         {tracking ? "Tracking" : "Track"}</button>
     </div>
   );
